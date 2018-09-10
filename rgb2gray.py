@@ -9,8 +9,9 @@ tpb = 32
 @cuda.autojit
 def rgb2gray(d_img,d_gray):
 	x, y = cuda.grid(2)
-	if x < d_img.shape[0] and y < d_img.shape[1]:
-		d_gray[x,y,0] = d_img[x,y,2] * 0.3 + d_img[x,y,1] * 0.59 + d_img[x,y,0] * 0.11
+	if x >= d_img.shape[0] or y >= d_img.shape[1]:
+		return
+	d_gray[x,y,0] = d_img[x,y,2] * 0.3 + d_img[x,y,1] * 0.59 + d_img[x,y,0] * 0.11
 
 if len(sys.argv) < 2:
 	print('Usage: python rgb2gray.py path_to_img')
