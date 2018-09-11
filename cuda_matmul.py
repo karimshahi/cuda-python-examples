@@ -50,4 +50,4 @@ hid = int(1023/32) + 1
 blockdim = (TPB, TPB)
 griddim = (int((c.shape[0]-1)/TPB) + 1, int((c.shape[1]-1)/TPB) + 1)
 
-matmul[griddim,blockdim](a,b,c)
+fast_matmul[griddim,blockdim](a,b,c)
