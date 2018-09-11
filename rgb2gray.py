@@ -21,7 +21,7 @@ img = cv2.imread(sys.argv[1])
 gray = np.zeros([img.shape[0],img.shape[1],1],dtype=np.uint8)
 
 blockdim = (tpb, tpb)
-griddim = (int(img.shape[0]/tpb) + 1, int(img.shape[1]/tpb) + 1)
+griddim = (int(img.shape[0]-1/tpb) + 1, int(img.shape[1]-1/tpb) + 1)
 
 rgb2gray[griddim,blockdim](img,gray)
 
