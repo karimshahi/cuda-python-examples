@@ -27,7 +27,7 @@ if len(sys.argv) < 2:
 img = cv2.imread(sys.argv[1])
 out = np.zeros([img.shape[0]-2, img.shape[1]-2, 3], dtype = np.uint8)
 
-griddim = (int((out.shape[0]-1)/18) + 1, int((out.shape[1]-1)/18) + 1, 3)
+griddim = (int((out.shape[0]-1)/32) + 1, int((out.shape[1]-1)/32) + 1, 3)
 blockdim = (32, 32)
 
 blur_gpu[griddim, blockdim](img, out, kernel)
